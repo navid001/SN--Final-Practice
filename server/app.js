@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const routes = require("./routes/routes");
 const mongoose = require("mongoose");
+const path = require("path");
+
 
 const app = express();
 
@@ -17,6 +19,7 @@ mongoose
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "dist")));
 
 // Routes
 app.use("/api", routes);
